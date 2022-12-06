@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import TableVueVue from "./components/Table/TableVue.vue";
 
 const selectColumn = ref(["Name", "Age", "Created On", "Percent", "Actions"]);
 
@@ -8,11 +7,13 @@ const columns = [
   {
     label: "Name",
     field: "name",
+    sortable: false,
   },
   {
     label: "Age",
     field: "age",
     type: "number",
+    sortable: false,
   },
   {
     label: "Created On",
@@ -20,23 +21,28 @@ const columns = [
     type: "date",
     dateInputFormat: "yyyy-MM-dd",
     dateOutputFormat: "MMM do yy",
+    sortable: false,
   },
   {
     label: "Percent",
     field: "score",
     type: "percentage",
+    sortable: false,
   },
   {
     label: "TEST1",
     field: "test1",
+    sortable: false,
   },
   {
     label: "TEST2",
     field: "test2",
+    sortable: false,
   },
   {
     label: "Actions",
     field: "actions",
+    sortable: false,
   },
 ];
 
@@ -116,12 +122,19 @@ const rows = ref([
   },
 ]);
 
+const table = ref();
+
+const checkSelectedRows = () => {
+  console.log(table.value.selectedRows);
+};
+
 const clicks = (data: any) => console.log(data);
 </script>
 
 <template>
   <div>
     <h1>Hello</h1>
+    <button @click="checkSelectedRows">Check Selected Rows</button>
     <div>
       <div v-for="column in selectColumn" :key="column">
         <input
@@ -134,7 +147,16 @@ const clicks = (data: any) => console.log(data);
       </div>
     </div>
 
-    <vue-good-table :columns="testColumn" :rows="rows">
+    <vue-good-table
+      ref="table"
+      :columns="testColumn"
+      :rows="rows"
+      :select-options="{
+        enabled: true,
+        disableSelectInfo: true,
+        selectOnCheckboxOnly: true,
+      }"
+    >
       <template v-slot:table-row="props">
         <span v-if="props.column.field == 'age'">
           <span style="font-weight: bold; color: blue"

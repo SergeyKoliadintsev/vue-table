@@ -44,16 +44,16 @@ a,
   background-color: red !important;
 } */
 
-#vgt-table tbody tr {
+/* #vgt-table tbody tr {
   box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
   border-radius: 5px;
-  /* border: 12px solid #FAFBFC ; */
+  border: 12px solid #FAFBFC ;
 
-}
+} */
 
-#vgt-table tbody tr td {
+/* #vgt-table tbody tr td {
   background-color: white;
-}
+} */
 
 th {
   background: #FAFBFC !important;
@@ -65,12 +65,15 @@ tbody {
   display: flex;
   flex-direction: column;
   gap: 25px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   flex-grow: 1;
+  padding: 30px;
 }
 
 tbody tr {
   display: flex;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
 }
 
 tbody tr td {
@@ -79,8 +82,11 @@ tbody tr td {
 }
 
 thead {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+/* display: flex; */
+/* flex-grow: 1; */
 }
+
 
 thead tr {
   display: flex;
