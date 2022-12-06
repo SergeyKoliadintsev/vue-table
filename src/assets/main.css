@@ -35,14 +35,22 @@ a,
 }
 
 #vgt-table {
-  border: 5px solid red !important;
+  border: none ;
+  background-color: orange;
 }
 
 #vgt-table thead tr th {
-  border: 2px solid green !important;
+  border: none;
+}
+
+#vgt-table tbody tr {
+  box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
+  border-radius: 5px;
+
 }
 
 #vgt-table tbody tr td {
-  border: 2px solid red !important;
+  border: 2px solid red ;
+  background-color: white;
 }
 

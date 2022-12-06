@@ -122,6 +122,18 @@ const clicks = (data: any) => console.log(data);
 <template>
   <div>
     <h1>Hello</h1>
+    <div>
+      <div v-for="column in selectColumn" :key="column">
+        <input
+          type="checkbox"
+          :id="column"
+          :value="column"
+          v-model="checkbox"
+        />
+        <label :for="column">{{ column }}</label>
+      </div>
+    </div>
+
     <vue-good-table :columns="testColumn" :rows="rows">
       <template v-slot:table-row="props">
         <span v-if="props.column.field == 'age'">
@@ -139,21 +151,7 @@ const clicks = (data: any) => console.log(data);
         </span>
       </template>
       <template v-slot:table-actions-bottom>
-        This will show up on the top right of the table gasdgsdgsdg.
-        asklgnasgnasdg
         <button @click="loadMore">Load more</button>
-      </template>
-      <template v-slot:table-actions>
-        This will show up on the top right of the table gasdgsdgsdg.
-        <div v-for="column in selectColumn" :key="column">
-          <input
-            type="checkbox"
-            :id="column"
-            :value="column"
-            v-model="checkbox"
-          />
-          <label :for="column">{{ column }}</label>
-        </div>
       </template>
     </vue-good-table>
     <TableVueVue :columns="testColumn" :rows="rows">
