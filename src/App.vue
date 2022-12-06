@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import useTable from "@/hooks/useTable";
 
 const selectColumn = ref(["Name", "Age", "Created On", "Percent", "Actions"]);
 
@@ -45,26 +46,6 @@ const columns = [
     sortable: false,
   },
 ];
-
-const checkbox = ref([]);
-
-let testColumn = computed(() => {
-  return (
-    columns.filter((el: any) => {
-      for (let i = 0; i < 5; i++) {
-        if (el.label === checkbox.value[i]) {
-          return el;
-        }
-      }
-    }) || []
-  );
-});
-
-const loadMore = () => {
-  rows.value?.push(...rows.value);
-  console.log("rows", rows);
-};
-
 const rows = ref([
   {
     id: 1,
@@ -121,11 +102,16 @@ const rows = ref([
     test2: "fsadgasdg",
   },
 ]);
+const selectedColumns = ref(["Name", "Age"]);
 
-const table = ref();
+const { dynamicColumns, loadMore, table_fef } = useTable(
+  columns,
+  selectedColumns,
+  rows
+);
 
 const checkSelectedRows = () => {
-  console.log(table.value.selectedRows);
+  console.log(table_fef.value.selectedRows);
 };
 
 const clicks = (data: any) => console.log(data);
@@ -133,7 +119,6 @@ const clicks = (data: any) => console.log(data);
 
 <template>
   <div>
-    <h1>Hello</h1>
     <button @click="checkSelectedRows">Check Selected Rows</button>
     <div>
       <div v-for="column in selectColumn" :key="column">
@@ -141,15 +126,15 @@ const clicks = (data: any) => console.log(data);
           type="checkbox"
           :id="column"
           :value="column"
-          v-model="checkbox"
+          v-model="selectedColumns"
         />
         <label :for="column">{{ column }}</label>
       </div>
     </div>
 
     <vue-good-table
-      ref="table"
-      :columns="testColumn"
+      ref="table_fef"
+      :columns="dynamicColumns"
       :rows="rows"
       :select-options="{
         enabled: true,
