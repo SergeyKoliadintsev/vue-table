@@ -39,16 +39,7 @@ const columns = [
     tdClass: "text-align-center",
     thClass: "text-align-center",
   },
-  // {
-  //   label: "TEST1",
-  //   field: "test1",
-  //   sortable: false,
-  // },
-  // {
-  //   label: "TEST2",
-  //   field: "test2",
-  //   sortable: false,
-  // },
+
   {
     label: "Actions",
     field: "actions",
@@ -124,6 +115,12 @@ const selectedColumns = ref([
 const { loadMore, table_ref } = useTable(columns, selectedColumns, rows);
 
 const search = ref("");
+
+const table = ref();
+
+const checkSelectedRows = () => {
+  console.log(table.value.selectedRows);
+};
 
 const clicks = (data: any) => console.log(data);
 </script>
