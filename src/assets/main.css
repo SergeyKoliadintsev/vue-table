@@ -1,4 +1,4 @@
-@import './base.css';
+@import "./base.css";
 
 #app {
   max-width: 1280px;
@@ -35,8 +35,9 @@ a,
 }
 
 #vgt-table {
-  border: none ;
-  background-color: #FAFBFC;
+  border: none;
+  background-color: #fafbfc;
+  width: 1000px;
 }
 
 /* #vgt-table thead tr th {
@@ -48,7 +49,6 @@ a,
   box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
   border-radius: 5px;
   /* border: 12px solid #FAFBFC ; */
-
 }
 
 #vgt-table tbody tr td {
@@ -56,7 +56,7 @@ a,
 }
 
 th {
-  background: #FAFBFC !important;
+  background: #fafbfc !important;
   border: none !important;
   border-bottom: none !important;
 }
@@ -64,8 +64,7 @@ th {
 tbody {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  border: 1px solid red;
+  gap: 12px;
   flex-grow: 1;
 }
 
@@ -78,8 +77,10 @@ tbody tr td {
   border: none !important;
 }
 
-thead {
-  border: 1px solid red;
+table.vgt-table td {
+  /* display: flex;
+  align-items: center; */
+  padding: 24px;
 }
 
 thead tr {
@@ -88,4 +89,9 @@ thead tr {
 
 thead tr th {
   flex-grow: 1;
+}
+
+.vgt-checkbox-col {
+  display: flex;
+  align-items: center;
 }

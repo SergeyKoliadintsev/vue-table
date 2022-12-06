@@ -40,7 +40,7 @@ const columns = [
   },
 ];
 
-const checkbox = ref([]);
+const checkbox = ref(["Name", "Age", "Created On", "Percent", "Actions"]);
 
 let testColumn = computed(() => {
   return (
@@ -134,7 +134,11 @@ const clicks = (data: any) => console.log(data);
       </div>
     </div>
 
-    <vue-good-table :columns="testColumn" :rows="rows">
+    <vue-good-table
+      :columns="testColumn"
+      :rows="rows"
+      :select-options="{ enabled: true }"
+    >
       <template v-slot:table-row="props">
         <span v-if="props.column.field == 'age'">
           <span style="font-weight: bold; color: blue"
