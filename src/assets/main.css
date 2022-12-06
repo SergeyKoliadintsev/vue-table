@@ -75,6 +75,7 @@ tbody tr {
 
 tbody tr td {
   flex-grow: 1;
+  border: none !important;
 }
 
 thead {
