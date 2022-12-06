@@ -116,12 +116,6 @@ const { loadMore, table_ref } = useTable(columns, selectedColumns, rows);
 
 const search = ref("");
 
-const table = ref();
-
-const checkSelectedRows = () => {
-  console.log(table.value.selectedRows);
-};
-
 const clicks = (data: any) => console.log(data);
 </script>
 
