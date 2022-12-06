@@ -45,15 +45,15 @@ a,
   background-color: red !important;
 } */
 
-#vgt-table tbody tr {
+/* #vgt-table tbody tr {
   box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
   border-radius: 5px;
   /* border: 12px solid #FAFBFC ; */
-}
+/* } */
 
-#vgt-table tbody tr td {
+/* #vgt-table tbody tr td {
   background-color: white;
-}
+} */
 
 th {
   background: #fafbfc !important;
@@ -66,10 +66,13 @@ tbody {
   flex-direction: column;
   gap: 12px;
   flex-grow: 1;
+  padding: 30px;
 }
 
 tbody tr {
   display: flex;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
 }
 
 tbody tr td {
