@@ -42,7 +42,7 @@ const columns = [
 
 const checkbox = ref([]);
 
-const testColumn = computed(() => {
+let testColumn = computed(() => {
   return (
     columns.filter((el: any) => {
       for (let i = 0; i < 5; i++) {
@@ -53,6 +53,11 @@ const testColumn = computed(() => {
     }) || []
   );
 });
+
+const loadMore = () => {
+  rows.value?.push(...rows.value);
+  console.log("rows", rows);
+};
 
 const rows = ref([
   {
@@ -133,6 +138,11 @@ const clicks = (data: any) => console.log(data);
           </span>
         </span>
       </template>
+      <template v-slot:table-actions-bottom>
+        This will show up on the top right of the table gasdgsdgsdg.
+        asklgnasgnasdg
+        <button @click="loadMore">Load more</button>
+      </template>
       <template v-slot:table-actions>
         This will show up on the top right of the table gasdgsdgsdg.
         <div v-for="column in selectColumn" :key="column">
@@ -159,6 +169,7 @@ const clicks = (data: any) => console.log(data);
           <label :for="column">{{ column }}</label>
         </div>
       </template>
+
       <template v-slot:table-row="props">
         <span v-if="props.column.field == 'age'">
           <span style="font-weight: bold; color: blue"
