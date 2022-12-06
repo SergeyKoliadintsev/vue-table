@@ -154,36 +154,6 @@ const clicks = (data: any) => console.log(data);
         <button @click="loadMore">Load more</button>
       </template>
     </vue-good-table>
-    <TableVueVue :columns="testColumn" :rows="rows">
-      <template v-slot:table-actions>
-        This will show up on the top right of the table gasdgsdgsdg.
-        <div v-for="column in selectColumn" :key="column">
-          <input
-            type="checkbox"
-            :id="column"
-            :value="column"
-            v-model="checkbox"
-          />
-          <label :for="column">{{ column }}</label>
-        </div>
-      </template>
-
-      <template v-slot:table-row="props">
-        <span v-if="props.column.field == 'age'">
-          <span style="font-weight: bold; color: blue"
-            >{{ props.row.age }}
-          </span>
-        </span>
-        <span v-else>
-          {{ props.formattedRow[props.column.field] }}
-        </span>
-        <span v-if="props.column.field == 'actions'">
-          <span>
-            <button @click="clicks(props.row)">Trulala</button>
-          </span>
-        </span>
-      </template>
-    </TableVueVue>
   </div>
 </template>
 
