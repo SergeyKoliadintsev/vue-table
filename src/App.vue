@@ -9,42 +9,50 @@ const columns = [
     label: "Name",
     field: "name",
     sortable: false,
+    // width: "20%",
   },
   {
     label: "Age",
     field: "age",
     type: "number",
     sortable: false,
+    tdClass: "text-align-center",
+    // width: "10%",
   },
-  {
-    label: "Created On",
-    field: "createdAt",
-    type: "date",
-    dateInputFormat: "yyyy-MM-dd",
-    dateOutputFormat: "MMM do yy",
-    sortable: false,
-  },
+  // {
+  //   label: "Created On",
+  //   field: "createdAt",
+  //   type: "date",
+  //   dateInputFormat: "yyyy-MM-dd",
+  //   dateOutputFormat: "MMM do yy",
+  //   sortable: false,
+  //   tdClass: "text-align-center",
+  //   thClass: "text-align-center",
+  //   // width: "25%",
+  // },
   {
     label: "Percent",
     field: "score",
     type: "percentage",
     sortable: false,
+    // width: "10%",
   },
-  {
-    label: "TEST1",
-    field: "test1",
-    sortable: false,
-  },
-  {
-    label: "TEST2",
-    field: "test2",
-    sortable: false,
-  },
-  {
-    label: "Actions",
-    field: "actions",
-    sortable: false,
-  },
+  // {
+  //   label: "TEST1",
+  //   field: "test1",
+  //   sortable: false,
+  // },
+  // {
+  //   label: "TEST2",
+  //   field: "test2",
+  //   sortable: false,
+  // },
+  // {
+  //   label: "Actions",
+  //   field: "actions",
+  //   sortable: false,
+  //   thClass: "text-align-right",
+  // },
 ];
 const rows = ref([
   {
@@ -88,7 +96,7 @@ const rows = ref([
     name: "Dan",
     age: 40,
     createdAt: "2011-10-21",
-    score: 0.03343,
+    score: 234343.0334343,
     test1: "gdsag1",
     test2: "fsadgasdg",
   },
@@ -102,7 +110,13 @@ const rows = ref([
     test2: "fsadgasdg",
   },
 ]);
-const selectedColumns = ref(["Name", "Age"]);
+const selectedColumns = ref([
+  "Name",
+  "Age",
+  "Created On",
+  "Percent",
+  "Actions",
+]);
 
 const { dynamicColumns, loadMore, table_fef } = useTable(
   columns,
@@ -119,7 +133,7 @@ const clicks = (data: any) => console.log(data);
 
 <template>
   <div>
-    <button @click="checkSelectedRows">Check Selected Rows</button>
+    <!-- <button @click="checkSelectedRows">Check Selected Rows</button>
     <div>
       <div v-for="column in selectColumn" :key="column">
         <input
@@ -130,11 +144,11 @@ const clicks = (data: any) => console.log(data);
         />
         <label :for="column">{{ column }}</label>
       </div>
-    </div>
+    </div> -->
 
     <vue-good-table
       ref="table_fef"
-      :columns="dynamicColumns"
+      :columns="columns"
       :rows="rows"
       :select-options="{
         enabled: true,
@@ -154,6 +168,11 @@ const clicks = (data: any) => console.log(data);
         <span v-if="props.column.field == 'actions'">
           <span>
             <button @click="clicks(props.row)">Trulala</button>
+          </span>
+        </span>
+        <span v-if="props.column.field == 'test1'">
+          <span>
+            {{ props.row.age }}
           </span>
         </span>
       </template>
