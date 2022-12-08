@@ -1,7 +1,7 @@
 import { ref, computed } from "vue";
 
 export default function useTable(columns, selectedColumns, rows) {
-  const table_fef = ref();
+  const table_ref = ref();
 
   const loadMore = () => {
     rows.value?.push(...rows.value);
@@ -23,6 +23,6 @@ export default function useTable(columns, selectedColumns, rows) {
   return {
     dynamicColumns,
     loadMore,
-    table_fef,
+    table_ref,
   };
 }
