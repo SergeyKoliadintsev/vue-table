@@ -173,18 +173,6 @@ const { loadMore, table_ref } = useTable(columns, selectedColumns, rows);
 const search = ref("");
 
 const clicks = (data: any) => console.log(data);
-
-onMounted(() => {
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.5,
-  };
-  const callback = () => rows.value.push(...testRows);
-  const observer = new IntersectionObserver(callback, options);
-  const observeredEl = document.querySelector(".observer");
-  observer.observe(observeredEl);
-});
 </script>
 
 <template>
