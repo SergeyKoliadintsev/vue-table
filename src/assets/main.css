@@ -156,6 +156,7 @@ input[type="checkbox"] {
   background-color: #fff;
   border: 2px solid #f2f3f5;
   border-radius: 5px;
+  transition: border-color 0.15s ease-in-out;
 }
 
 .vgt-checkbox-col::after {
@@ -175,8 +176,13 @@ input[type="checkbox"] {
 }
 
 .vgt-checkbox-col:has(input:checked)::before {
-  background-color: blue !important;
+  background-color: #8934ff;
 }
+
+.vgt-checkbox-col:has(input:hover)::before {
+  border-color: #8934ff !important;
+}
+
 .vgt-checkbox-col:has(input:checked)::after {
   display: block;
 }
