@@ -1,28 +1,17 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
-export default function useTable(columns, selectedColumns, rows) {
+export default function useTable(columns, rows, loadMoreFunc) {
   const table_ref = ref();
+  const search = ref("");
 
   const loadMore = () => {
+    loadMoreFunc();
     rows.value?.push(...rows.value);
-    console.log("rows", rows);
   };
 
-  const dynamicColumns = computed(() => {
-    return (
-      columns.filter((el: any) => {
-        for (let i = 0; i < 5; i++) {
-          if (el.label === selectedColumns.value[i]) {
-            return el;
-          }
-        }
-      }) || []
-    );
-  });
-
   return {
-    dynamicColumns,
     loadMore,
     table_ref,
+    search,
   };
 }
