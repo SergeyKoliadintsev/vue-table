@@ -113,15 +113,12 @@ const rows = ref([
     test2: "fsadgasdg",
   },
 ]);
-const selectedColumns = ref([
-  "Name",
-  "Age",
-  "Created On",
-  "Percent",
-  "Actions",
-]);
 
-const { loadMore, table_ref } = useTable(columns, selectedColumns, rows);
+const loadFunc = () => {
+  console.log("LOAD MORE ....");
+};
+
+const { loadMore, table_ref } = useTable(columns, rows, loadFunc);
 
 const search = ref("");
 
@@ -184,6 +181,9 @@ const clicks = (data: any) => console.log(data);
           </span>
         </template>
       </vue-good-table>
+      <div class="loadMoreS">
+        <button @click="loadMore">Load more</button>
+      </div>
     </div>
   </div>
 </template>
@@ -193,5 +193,10 @@ const clicks = (data: any) => console.log(data);
   padding: 0 30px 30px 30px;
   background-color: #fafbfc;
   border-radius: 0px 0px 20px 20px;
+}
+
+.loadMoreS {
+  display: flex;
+  justify-content: center;
 }
 </style>
