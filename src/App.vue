@@ -4,12 +4,68 @@ import { ref } from "vue";
 import useTable from "@/hooks/useTable";
 import TheTableHeaderVue from "./components/Table/TheTableHeader.vue";
 
+const testRows = [
+  {
+    id: 1,
+    name: "John",
+    age: 20,
+    createdAt: "2011-10-31",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 2,
+    name: "Jane",
+    age: 24,
+    createdAt: "2011-10-31",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 3,
+    name: "Susan",
+    age: 16,
+    createdAt: "2011-10-30",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 4,
+    name: "Chris",
+    age: 55,
+    createdAt: "2011-10-11",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 5,
+    name: "Dan",
+    age: 40,
+    createdAt: "2011-10-21",
+    score: 234343.0334343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 6,
+    name: "John",
+    age: 20,
+    createdAt: "2011-10-31",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+];
+
 const columns = [
   {
     label: "Name",
     field: "name",
     sortable: false,
-    // width: "20%",
   },
   {
     label: "Age",
@@ -39,16 +95,7 @@ const columns = [
     tdClass: "text-align-center",
     thClass: "text-align-center",
   },
-  // {
-  //   label: "TEST1",
-  //   field: "test1",
-  //   sortable: false,
-  // },
-  // {
-  //   label: "TEST2",
-  //   field: "test2",
-  //   sortable: false,
-  // },
+
   {
     label: "Actions",
     field: "actions",
