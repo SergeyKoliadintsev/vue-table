@@ -15,14 +15,13 @@ const loadData = () => {
   emit("loadMoreEMit");
 };
 
-const { loadMore, search } = useTable({
+const { loadMore } = useTable({
   loadMoreFunc: loadData,
 });
 </script>
 
 <template>
   <div class="table">
-    Search:::::{{ search }} Children
     <div class="header">
       <div class="header_title_length">
         <span>{{ props.title }}</span>

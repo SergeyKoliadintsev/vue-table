@@ -7,7 +7,6 @@ export default function useTable({
 }) {
   const table_ref = ref();
   const search = ref("");
-  const search2 = computed(() => search);
 
   const loadMore = () => {
     loadMoreFunc();
@@ -17,6 +16,5 @@ export default function useTable({
     loadMore,
     table_ref,
     search,
-    search2,
   };
 }
