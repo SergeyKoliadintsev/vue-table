@@ -2,7 +2,7 @@
 import { ref } from "vue";
 // @ts-ignore
 import useTable from "@/hooks/useTable";
-import TheTableHeaderVue from "./components/Table/TheTableHeader.vue";
+import TableWrapper from "./components/Table/TableWrapper.vue";
 
 const testRows = [
   {
@@ -161,27 +161,27 @@ const rows = ref([
   },
 ]);
 
-const loadFunc = () => {
-  console.log("LOAD MORE ....");
+const loadmoregG = () => {
+  rows.value?.push(...rows.value);
 };
 
-const { loadMore, table_ref } = useTable(columns, rows, loadFunc);
-
-const search = ref("");
+const { table_ref, search } = useTable({ columns, rows });
 
 const clicks = (data: any) => console.log(data);
 </script>
 
 <template>
   <div>
-    <TheTableHeaderVue
-      title="Test table"
-      :length="`${rows.length} Administrators`"
-      :search="search"
+    <TableWrapper
+      :title="'trulala'"
+      :length="'222 AAA'"
+      @load-more-e-mit="loadmoregG()"
     >
-      <input type="text" v-model="search" />
-    </TheTableHeaderVue>
-    <div class="tableWrapper">
+      <template v-slot:search>
+        <div>
+          <input type="text" v-model="search" />
+        </div>
+      </template>
       <vue-good-table
         ref="table_ref"
         :columns="columns"
@@ -228,22 +228,6 @@ const clicks = (data: any) => console.log(data);
           </span>
         </template>
       </vue-good-table>
-      <div class="loadMoreS">
-        <button @click="loadMore">Load more</button>
-      </div>
-    </div>
+    </TableWrapper>
   </div>
 </template>
-
-<style scoped>
-.tableWrapper {
-  padding: 0 30px 30px 30px;
-  background-color: #fafbfc;
-  border-radius: 0px 0px 20px 20px;
-}
-
-.loadMoreS {
-  display: flex;
-  justify-content: center;
-}
-</style>
