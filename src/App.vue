@@ -2,14 +2,70 @@
 import { ref } from "vue";
 // @ts-ignore
 import useTable from "@/hooks/useTable";
-import TheTableHeaderVue from "./components/Table/TheTableHeader.vue";
+import TableWrapper from "./components/Table/TableWrapper.vue";
+
+const testRows = [
+  {
+    id: 1,
+    name: "John",
+    age: 20,
+    createdAt: "2011-10-31",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 2,
+    name: "Jane",
+    age: 24,
+    createdAt: "2011-10-31",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 3,
+    name: "Susan",
+    age: 16,
+    createdAt: "2011-10-30",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 4,
+    name: "Chris",
+    age: 55,
+    createdAt: "2011-10-11",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 5,
+    name: "Dan",
+    age: 40,
+    createdAt: "2011-10-21",
+    score: 234343.0334343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+  {
+    id: 6,
+    name: "John",
+    age: 20,
+    createdAt: "2011-10-31",
+    score: 0.03343,
+    test1: "gdsag1",
+    test2: "fsadgasdg",
+  },
+];
 
 const columns = [
   {
     label: "Name",
     field: "name",
     sortable: false,
-    // width: "20%",
   },
   {
     label: "Age",
@@ -39,16 +95,7 @@ const columns = [
     tdClass: "text-align-center",
     thClass: "text-align-center",
   },
-  // {
-  //   label: "TEST1",
-  //   field: "test1",
-  //   sortable: false,
-  // },
-  // {
-  //   label: "TEST2",
-  //   field: "test2",
-  //   sortable: false,
-  // },
+
   {
     label: "Actions",
     field: "actions",
@@ -113,31 +160,28 @@ const rows = ref([
     test2: "fsadgasdg",
   },
 ]);
-const selectedColumns = ref([
-  "Name",
-  "Age",
-  "Created On",
-  "Percent",
-  "Actions",
-]);
 
-const { loadMore, table_ref } = useTable(columns, selectedColumns, rows);
+const loadmoregG = () => {
+  rows.value?.push(...rows.value);
+};
 
-const search = ref("");
+const { table_ref, search } = useTable({ columns, rows });
 
 const clicks = (data: any) => console.log(data);
 </script>
 
 <template>
   <div>
-    <TheTableHeaderVue
-      title="Test table"
-      :length="`${rows.length} Administrators`"
-      :search="search"
+    <TableWrapper
+      :title="'trulala'"
+      :length="'222 AAA'"
+      @load-more-e-mit="loadmoregG()"
     >
-      <input type="text" v-model="search" />
-    </TheTableHeaderVue>
-    <div class="tableWrapper">
+      <template v-slot:search>
+        <div>
+          <input type="text" v-model="search" />
+        </div>
+      </template>
       <vue-good-table
         ref="table_ref"
         :columns="columns"
@@ -184,14 +228,6 @@ const clicks = (data: any) => console.log(data);
           </span>
         </template>
       </vue-good-table>
-    </div>
+    </TableWrapper>
   </div>
 </template>
-
-<style scoped>
-.tableWrapper {
-  padding: 0 30px 30px 30px;
-  background-color: #fafbfc;
-  border-radius: 0px 0px 20px 20px;
-}
-</style>
