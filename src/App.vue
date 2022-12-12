@@ -124,7 +124,7 @@ const clicks = (data: any) => console.log(data);
 </script>
 
 <template>
-  <div>
+  <div class="app-wrapper">
     <TableWrapper
       :title="'Office Cockpit'"
       :length="`${rows.length} Administrators`"
@@ -181,3 +181,10 @@ const clicks = (data: any) => console.log(data);
     </TableWrapper>
   </div>
 </template>
+
+<style>
+.app-wrapper {
+  background: #f5f6f7;
+  padding: 30px;
+}
+</style>

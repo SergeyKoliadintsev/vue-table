@@ -45,7 +45,7 @@ const searchValid = computed(() => {
       </div>
       <div class="search">
         <FormInput
-          name="Search"
+          name=""
           v-model="search"
           :status="{ valid: true, message: '' }"
           :plaseholder="'Search...'"
@@ -55,8 +55,9 @@ const searchValid = computed(() => {
         </FormInput>
       </div>
       <div>
-        <div>
-          <button>Filter list</button> <button>FILTER</button>
+        <div class="actions_wrapper">
+          <button>Filter list</button>
+          <button class="loadMoreButton">Filter</button>
           <button @click="addAction">Actions</button>
         </div>
       </div>
@@ -65,7 +66,7 @@ const searchValid = computed(() => {
     <div class="tableWrapper">
       <slot />
       <div class="loadMoreS">
-        <button @click="loadMore">Load more</button>
+        <button class="loadMoreButton" @click="loadMore">Load more</button>
       </div>
     </div>
   </div>
@@ -108,5 +109,27 @@ const searchValid = computed(() => {
 .loadMoreS {
   display: flex;
   justify-content: center;
+}
+
+.loadMoreButton {
+  width: 106px;
+  height: 40px;
+  border: 2px solid #f5f6f7;
+  box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
+  border-radius: 20px;
+  background: #ffffff;
+  cursor: pointer;
+  color: #7d8fb3;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+}
+.loadMoreButton:hover {
+  border: 2px solid #8934ff;
+}
+
+.actions_wrapper {
+  display: flex;
+  gap: 20px;
 }
 </style>
