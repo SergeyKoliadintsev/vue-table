@@ -1,16 +1,21 @@
 <script setup lang="ts">
+import { watch, computed } from "vue";
 // @ts-ignore
 import useTable from "../../hooks/useTable";
-
-const emit = defineEmits<{
-  (event: "loadMoreEmit"): void;
-  (event: "addActionEmit"): void;
-}>();
+import FormInput from "../FormInput.vue";
+// @ts-ignore
+import { validate, length } from "@/validation";
 
 const props = defineProps({
   title: { type: String, required: true },
   length: { type: String, required: true },
 });
+
+const emit = defineEmits<{
+  (event: "loadMoreEmit"): void;
+  (event: "addActionEmit"): void;
+  (event: "searchEmit", search: string): void;
+}>();
 
 const loadData = () => {
   emit("loadMoreEmit");
@@ -20,20 +25,34 @@ const addAction = () => {
   emit("addActionEmit");
 };
 
-const { loadMore } = useTable({
+const { loadMore, search } = useTable({
   loadMoreFunc: loadData,
+});
+
+watch(search, () => emit("searchEmit", search));
+
+const searchValid = computed(() => {
+  return validate(search.value, [length({ min: 1, max: 10 })]);
 });
 </script>
 
 <template>
   <div class="table">
     <div class="header">
+      <span class="header_title">{{ props.title }}</span>
       <div class="header_title_length">
-        <span>{{ props.title }}</span>
         <span>{{ props.length }}</span>
       </div>
       <div class="search">
-        <slot name="search" />
+        <FormInput
+          name="Search"
+          v-model="search"
+          :status="{ valid: true, message: '' }"
+          :plaseholder="'Search...'"
+          type="text"
+        >
+          <template v-slot:icon-left>🔥</template>
+        </FormInput>
       </div>
       <div>
         <div>
@@ -78,6 +97,12 @@ const { loadMore } = useTable({
   padding: 0 30px 30px 30px;
   background-color: #fafbfc;
   border-radius: 0px 0px 20px 20px;
+}
+
+.header_title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4d5e80;
 }
 
 .loadMoreS {
