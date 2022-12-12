@@ -165,17 +165,25 @@ const loadmoregG = () => {
   rows.value?.push(...rows.value);
 };
 
+const addAdmin = () => {
+  console.log("Add Admin");
+};
+
 const { table_ref, search } = useTable({ columns, rows });
+
+const selectedRows = () => console.log(table_ref.value.selectedRows);
 
 const clicks = (data: any) => console.log(data);
 </script>
 
 <template>
   <div>
+    <button @click="selectedRows">Selected Rows</button>
     <TableWrapper
       :title="'trulala'"
       :length="'222 AAA'"
-      @load-more-e-mit="loadmoregG()"
+      @load-more-emit="loadmoregG"
+      @add-action-emit="addAdmin"
     >
       <template v-slot:search>
         <div>

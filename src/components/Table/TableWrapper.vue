@@ -3,7 +3,8 @@
 import useTable from "../../hooks/useTable";
 
 const emit = defineEmits<{
-  (event: "loadMoreEMit"): void;
+  (event: "loadMoreEmit"): void;
+  (event: "addActionEmit"): void;
 }>();
 
 const props = defineProps({
@@ -12,7 +13,11 @@ const props = defineProps({
 });
 
 const loadData = () => {
-  emit("loadMoreEMit");
+  emit("loadMoreEmit");
+};
+
+const addAction = () => {
+  emit("addActionEmit");
 };
 
 const { loadMore } = useTable({
@@ -33,7 +38,7 @@ const { loadMore } = useTable({
       <div>
         <div>
           <button>Filter list</button> <button>FILTER</button>
-          <button>Actions</button>
+          <button @click="addAction">Actions</button>
         </div>
       </div>
     </div>
