@@ -183,6 +183,18 @@ input[type="checkbox"] {
   border-color: #8934ff !important;
 }
 
-.vgt-checkbox-col:has(input:checked)::after {
+tbody .vgt-checkbox-col:has(input:checked)::after {
   display: block;
+}
+
+table:has(input:checked) thead tr .vgt-checkbox-col::after {
+  display: block;
+  background: none;
+  background-color: #8934ff;
+}
+
+table:has(input:checked) thead tr:has(input:checked) .vgt-checkbox-col::after {
+  background: url("./Icon.svg");
+  background-repeat: no-repeat;
+  background-position: 50%, 50%;
 }
