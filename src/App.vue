@@ -112,12 +112,10 @@ const addAdmin = () => {
   console.log("Add Admin", table_ref.value.selectedRows);
 };
 
-const { table_ref } = useTable({ columns, rows });
-
-const tableSearch = ref("");
+const { table_ref, search } = useTable({ columns, rows });
 
 const handleSearch = (data: any) => {
-  return (tableSearch.value = data);
+  return (search.value = data);
 };
 
 const clicks = (data: any) => console.log(data);
@@ -143,7 +141,7 @@ const clicks = (data: any) => console.log(data);
         }"
         :search-options="{
           enabled: true,
-          externalQuery: tableSearch,
+          externalQuery: search,
         }"
       >
         >
@@ -191,5 +189,10 @@ const clicks = (data: any) => console.log(data);
 .app-wrapper-ggg {
   background: #f5f6f7;
   padding: 30px;
+}
+
+.test {
+  border: 1px solid red;
+  padding: theme("spacing.55");
 }
 </style>

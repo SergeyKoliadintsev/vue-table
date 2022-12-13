@@ -3,8 +3,6 @@ import { watch, computed } from "vue";
 // @ts-ignore
 import useTable from "../../hooks/useTable";
 import FormInput from "../FormInput.vue";
-// @ts-ignore
-import { validate, length } from "@/validation";
 
 const props = defineProps({
   title: { type: String, required: true },
@@ -30,10 +28,6 @@ const { loadMore, search } = useTable({
 });
 
 watch(search, () => emit("searchEmit", search));
-
-const searchValid = computed(() => {
-  return validate(search.value, [length({ min: 1, max: 10 })]);
-});
 </script>
 
 <template>
