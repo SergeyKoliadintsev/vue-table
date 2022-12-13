@@ -46,6 +46,5 @@ const { title, length } = defineProps({
   font-size: 20px;
   line-height: 30px;
   display: flex;
-  gap: 30px;
 }
 </style>
