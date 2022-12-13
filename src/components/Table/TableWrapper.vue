@@ -37,7 +37,7 @@ const searchValid = computed(() => {
 </script>
 
 <template>
-  <div class="table">
+  <div class="custom-table">
     <div class="header">
       <span class="header_title">{{ props.title }}</span>
       <div class="header_title_length">
