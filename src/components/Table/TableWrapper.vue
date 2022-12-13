@@ -72,7 +72,7 @@ const searchValid = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .header {
   height: 100px;
   border-radius: 20px 20px 0px 0px;
