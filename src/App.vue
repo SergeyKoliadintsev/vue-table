@@ -125,7 +125,6 @@ const clicks = (data: any) => console.log(data);
 
 <template>
   <div class="app-wrapper-ggg">
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
     <TableWrapper
       :title="'Office Cockpit'"
       :length="`${rows.length} Administrators`"
