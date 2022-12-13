@@ -7,7 +7,7 @@ import router from "./router";
 
 import "vue-good-table/dist/vue-good-table.css";
 
-import "./assets/main.css";
+import "./assets/main.scss";
 import "./style.css";
 
 const app = createApp(App);
