@@ -4,7 +4,6 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     spacing: {
-      55: "55px",
       1: "8px",
       2: "12px",
       3: "16px",

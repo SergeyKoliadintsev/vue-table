@@ -190,9 +190,4 @@ const clicks = (data: any) => console.log(data);
   background: #f5f6f7;
   padding: 30px;
 }
-
-.test {
-  border: 1px solid red;
-  padding: theme("spacing.55");
-}
 </style>
