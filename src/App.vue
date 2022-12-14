@@ -104,7 +104,7 @@ const rows = ref([
   },
 ]);
 
-const loadmoregG = () => {
+const loadMore = () => {
   rows.value?.push(...rows.value);
 };
 
@@ -126,7 +126,7 @@ const clicks = (data: any) => console.log(data);
     <TableWrapper
       :title="'Office Cockpit'"
       :length="`${rows.length} Administrators`"
-      @load-more-emit="loadmoregG"
+      @load-more-emit="loadMore"
       @add-action-emit="addAdmin"
       @search-emit="handleSearch"
     >
@@ -165,14 +165,12 @@ const clicks = (data: any) => console.log(data);
             {{ props.formattedRow[props.column.field] }}
           </span>
           <span v-if="props.column.field == 'actions'">
-            <span>
-              <button
-                @click="clicks(props.row)"
-                class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-              >
-                Trulala
-              </button>
-            </span>
+            <button
+              @click="clicks(props.row)"
+              class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+            >
+              Trulala
+            </button>
           </span>
           <span v-if="props.column.field == 'test1'">
             <span>
