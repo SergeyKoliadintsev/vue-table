@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { watch, computed } from "vue";
-// @ts-ignore
+import { watch } from "vue";
 import useTable from "../../hooks/useTable";
 import FormInput from "../FormInput.vue";
 
@@ -27,7 +26,7 @@ const { loadMore, search } = useTable({
   loadMoreFunc: loadData,
 });
 
-watch(search, () => emit("searchEmit", search));
+watch(search, () => emit("searchEmit", search.value));
 </script>
 
 <template>

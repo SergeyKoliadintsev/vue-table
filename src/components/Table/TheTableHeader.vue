@@ -1,7 +1,5 @@
 <!-- eslint-disable vue/no-setup-props-destructure -->
 <script setup lang="ts">
-import { ref } from "vue";
-
 const { title, length } = defineProps({
   title: { type: String, required: true },
   length: { type: String, required: true },

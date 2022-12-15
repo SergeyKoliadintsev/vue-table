@@ -1,15 +1,15 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
 export default function useTable({
   loadMoreFunc,
 }: {
-  loadMoreFunc: () => void;
+  loadMoreFunc?: () => void;
 }) {
   const table_ref = ref();
   const search = ref("");
 
   const loadMore = () => {
-    loadMoreFunc();
+    loadMoreFunc && loadMoreFunc();
   };
 
   return {

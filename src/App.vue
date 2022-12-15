@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-// @ts-ignore
+import { ref } from "vue";
 import useTable from "@/hooks/useTable";
 import TableWrapper from "./components/Table/TableWrapper.vue";
 
@@ -112,7 +111,7 @@ const addAdmin = () => {
   console.log("Add Admin", table_ref.value.selectedRows);
 };
 
-const { table_ref, search } = useTable({ columns, rows });
+const { table_ref, search } = useTable({});
 
 const handleSearch = (data: any) => {
   return (search.value = data);
@@ -183,7 +182,7 @@ const clicks = (data: any) => console.log(data);
   </div>
 </template>
 
-<style>
+<style lang="scss">
 .app-wrapper-ggg {
   background: #f5f6f7;
   padding: 30px;
