@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import useTable from "@/hooks/useTable";
 import TableWrapper from "./components/Table/TableWrapper.vue";
 
-const columns = [
+const { t, locale } = useI18n({ useScope: "global" });
+
+const columns = computed(() => [
   {
-    label: "Name",
+    label: t("table.headers.name"),
     field: "name",
     sortable: false,
   },
   {
-    label: "Age",
+    label: t("table.headers.age"),
     field: "age",
     type: "number",
     sortable: false,
@@ -18,7 +21,7 @@ const columns = [
     // width: "10%",
   },
   {
-    label: "Created On",
+    label: t("table.headers.createdOn"),
     field: "createdAt",
     type: "date",
     dateInputFormat: "yyyy-MM-dd",
@@ -29,7 +32,7 @@ const columns = [
     // width: "25%",
   },
   {
-    label: "Percent",
+    label: t("table.headers.percent"),
     field: "score",
     type: "percentage",
     sortable: false,
@@ -39,13 +42,14 @@ const columns = [
   },
 
   {
-    label: "Actions",
+    label: t("table.headers.actions"),
     field: "actions",
     sortable: false,
     tdClass: "text-align-center",
     thClass: "text-align-center",
   },
-];
+]);
+
 const rows = ref([
   {
     id: 1,
@@ -117,68 +121,79 @@ const handleSearch = (data: any) => {
   return (search.value = data);
 };
 
+const switchLang = () => {
+  locale.value === "en" ? (locale.value = "es") : (locale.value = "en");
+  localStorage.setItem("lang", locale.value);
+};
+
 const clicks = (data: any) => console.log(data);
 </script>
 
 <template>
-  <div class="app-wrapper-ggg">
-    <TableWrapper
-      :title="'Office Cockpit'"
-      :length="`${rows.length} Administrators`"
-      @load-more-emit="loadMore"
-      @add-action-emit="addAdmin"
-      @search-emit="handleSearch"
-    >
-      <vue-good-table
-        ref="table_ref"
-        :columns="columns"
-        :rows="rows"
-        :select-options="{
-          enabled: true,
-          disableSelectInfo: true,
-          selectOnCheckboxOnly: true,
-        }"
-        :search-options="{
-          enabled: true,
-          externalQuery: search,
-        }"
+  <div>
+    <div class="switch-button-container">
+      <button @click="switchLang">{{ t("switchLang") }}</button>
+    </div>
+
+    <div class="app-wrapper-ggg">
+      <TableWrapper
+        :title="t('table.head.title')"
+        :length="`${rows.length} Administrators`"
+        @load-more-emit="loadMore"
+        @add-action-emit="addAdmin"
+        @search-emit="handleSearch"
       >
+        <vue-good-table
+          ref="table_ref"
+          :columns="columns"
+          :rows="rows"
+          :select-options="{
+            enabled: true,
+            disableSelectInfo: true,
+            selectOnCheckboxOnly: true,
+          }"
+          :search-options="{
+            enabled: true,
+            externalQuery: search,
+          }"
         >
-        <template v-slot:table-row="props">
-          <span v-if="props.column.field == 'age'">
-            <span
-              :style="{
-                'font-weight': 'bold',
-                color:
-                  props.row.age % 3 === 2
-                    ? 'blue'
-                    : props.row.age % 3 === 0
-                    ? 'red'
-                    : 'green',
-              }"
-            >
-              {{ props.row.age }}
+          >
+          <template v-slot:table-row="props">
+            <span v-if="props.column.field == 'age'">
+              <span
+                :style="{
+                  'font-weight': 'bold',
+                  color:
+                    props.row.age % 3 === 2
+                      ? 'blue'
+                      : props.row.age % 3 === 0
+                      ? 'red'
+                      : 'green',
+                }"
+              >
+                {{ props.row.age }}
+              </span>
             </span>
-          </span>
-          <span v-else>
-            {{ props.formattedRow[props.column.field] }}
-          </span>
-          <span v-if="props.column.field == 'actions'">
-            <button
-              @click="clicks(props.row)"
-              class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-            >
-              Trulala
-            </button>
-          </span>
-          <span v-if="props.column.field == 'test1'">
-            <span>
-              {{ props.row.age }}
+            <span v-else>
+              {{ props.formattedRow[props.column.field] }}
             </span>
-          </span>
-        </template>
-      </vue-good-table>
-    </TableWrapper>
+            <span v-if="props.column.field == 'actions'">
+              <button
+                @click="clicks(props.row)"
+                class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              >
+                {{ t("action") }}
+              </button>
+            </span>
+            <span v-if="props.column.field == 'test1'">
+              <span>
+                {{ props.row.age }}
+              </span>
+            </span>
+          </template>
+        </vue-good-table>
+      </TableWrapper>
+    </div>
   </div>
 </template>
 
