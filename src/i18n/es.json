@@ -1,0 +1,20 @@
+{
+  "action": "Hagi vagi",
+  "table": {
+    "headers": {
+      "name": "Nombre",
+      "age": "Edad",
+      "createdOn": "Creado el",
+      "percent": "Porcentaje",
+      "actions": "Acciones"
+    },
+    "head": {
+      "title": "Cabina de la oficina",
+      "searchPlaceholder": "Búsqueda...",
+      "filter": "Filtrar",
+      "filterList": "Lista de filtros",
+      "actions": "Comportamiento"
+    }
+  },
+  "switchLang": "Cambiar de idioma"
+}

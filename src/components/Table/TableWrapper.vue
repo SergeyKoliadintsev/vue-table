@@ -41,7 +41,7 @@ watch(search, () => emit("searchEmit", search.value));
           name=""
           v-model="search"
           :status="{ valid: true, message: '' }"
-          :plaseholder="'Search...'"
+          :plaseholder="$t('table.head.searchPlaceholder')"
           type="text"
         >
           <template v-slot:icon-left>🔥</template>
@@ -49,9 +49,9 @@ watch(search, () => emit("searchEmit", search.value));
       </div>
       <div>
         <div class="actions_wrapper">
-          <button>Filter list</button>
-          <button class="loadMoreButton">Filter</button>
-          <button @click="addAction">Actions</button>
+          <button>{{ $t("table.head.filterList") }}</button>
+          <button class="loadMoreButton">{{ $t("table.head.filter") }}</button>
+          <button @click="addAction">{{ $t("table.head.actions") }}</button>
         </div>
       </div>
     </div>

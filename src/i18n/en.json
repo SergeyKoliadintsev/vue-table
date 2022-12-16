@@ -1,0 +1,20 @@
+{
+  "action": "Trulala",
+  "table": {
+    "headers": {
+      "name": "Name",
+      "age": "Age",
+      "createdOn": "Created On",
+      "percent": "Percent",
+      "actions": "Actions"
+    },
+    "head": {
+      "title": "Office Cockpit",
+      "searchPlaceholder": "Search...",
+      "filter": "Filter",
+      "filterList": "Filter list",
+      "actions": "Actions"
+    }
+  },
+  "switchLang": "Switch Lang"
+}

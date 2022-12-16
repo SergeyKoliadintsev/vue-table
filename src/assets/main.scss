@@ -15,3 +15,16 @@ a,
   transition: 0.4s;
 }
 
+.switch-button-container {
+  background-color: #f5f6f7;
+  text-align: right;
+  padding: 30px 30px 0 30px;
+
+  button {
+    background-color: #8934ff;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 10px 6px;
+    border-radius: 8px;
+  }
+}
